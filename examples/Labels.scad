@@ -17,6 +17,6 @@ difference()
       circle(d=5, center=true);
 
   translate([40, 20])
-    Label("a hole", size=2, offset=[8, 2], valign="left", angle=45)
+    Label("a hole", size=2, offset=[5, -5], valign="left", angle=45)
       circle(d=5, center=true);
 }
