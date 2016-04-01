@@ -21,7 +21,3 @@ module RackPanel19Inch(u=1, offset=12.7, hole_r=3, corner_r=5)
         circle(r=hole_r);
   }
 }
-
-RackPanel19Inch(u=1);
-translate([0, 44.75])
-    RackPanel19Inch(u=1);
