@@ -1,4 +1,5 @@
 use <PanelNutFixing.scad>;
+use <RackPanel.scad>;
 
 function internal_dims(config) = config[0];
 function material_thickness(config) = config[1][0];
@@ -11,6 +12,10 @@ function xy_panel_tabs_width(config) = config[4][0][0];
 function xy_panel_tabs(config) = config[4][0][1];
 function xz_panel_tabs_width(config) = config[4][1][0];
 function xz_panel_tabs(config) = config[4][1][1];
+function rack_panel_u(config) = config[5][0];
+function rack_panel_hole_r(config) = config[5][1];
+function rack_panel_corner_r(config) = config[5][2];
+function rack_panel_offset(config) = config[5][3];
 
 module PositionSidePanelFixings(positions=[], width=0, along_y=0)
 {
@@ -125,26 +130,45 @@ module YZPanel2D(config)
       circle(r=side_panel_padding(config), center=true);
     }
 
-    PositionSidePanelFixings(positions=xy_panel_screws(config),
-                             width=material_thickness(config)+internal_dims(config)[2])
-      circle(r=screw_hole_radius(config), center=true);
-
-    PositionSidePanelFixings(positions=xz_panel_screws(config),
-                             width=material_thickness(config)+internal_dims(config)[1],
-                             along_y=1)
-      circle(r=screw_hole_radius(config), center=true);
-
-    PositionSidePanelFixings(positions=xy_panel_tabs(config),
-                             width=material_thickness(config)+internal_dims(config)[2])
-      square([xy_panel_tabs_width(config)+material_tolerance(config),
-              material_thickness(config)+double_tolerance], center=true);
-
-    PositionSidePanelFixings(positions=xz_panel_tabs(config),
-                             width=material_thickness(config)+internal_dims(config)[1],
-                             along_y=1)
-      square([xz_panel_tabs_width(config)+material_tolerance(config),
-              material_thickness(config)+double_tolerance], center=true);
+    YZPanelFixings();
   }
+}
+
+module Rack19InchPanel2D(config)
+{
+  x = internal_dims(config)[1] + (2 * material_thickness(config));
+  y = internal_dims(config)[2] + (2 * material_thickness(config));
+  double_tolerance = 2 * material_tolerance(config);
+
+  difference()
+  {
+    RackPanel19Inch(u=rack_panel_u(config));
+
+    YZPanelFixings();
+  }
+}
+
+module YZPanelFixings()
+{
+  PositionSidePanelFixings(positions=xy_panel_screws(config),
+                           width=material_thickness(config)+internal_dims(config)[2])
+    circle(r=screw_hole_radius(config), center=true);
+
+  PositionSidePanelFixings(positions=xz_panel_screws(config),
+                           width=material_thickness(config)+internal_dims(config)[1],
+                           along_y=1)
+    circle(r=screw_hole_radius(config), center=true);
+
+  PositionSidePanelFixings(positions=xy_panel_tabs(config),
+                           width=material_thickness(config)+internal_dims(config)[2])
+    square([xy_panel_tabs_width(config)+material_tolerance(config),
+            material_thickness(config)+double_tolerance], center=true);
+
+  PositionSidePanelFixings(positions=xz_panel_tabs(config),
+                           width=material_thickness(config)+internal_dims(config)[1],
+                           along_y=1)
+    square([xz_panel_tabs_width(config)+material_tolerance(config),
+            material_thickness(config)+double_tolerance], center=true);
 }
 
 module XYPanel3D(config)
@@ -163,4 +187,10 @@ module YZPanel3D(config)
 {
   linear_extrude(height=material_thickness(config), center=true)
     YZPanel2D(config);
+}
+
+module Rack19InchPanel3D(config)
+{
+  linear_extrude(height=material_thickness(config), center=true)
+    Rack19InchPanel2D(config);
 }
