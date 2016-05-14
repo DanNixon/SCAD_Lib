@@ -140,7 +140,10 @@ module Rack19InchPanel2D(config)
 
   difference()
   {
-    RackPanel19Inch(u=rack_panel_u(config));
+    RackPanel19Inch(u=rack_panel_u(config),
+                    offset=rack_panel_offset(config),
+                    hole_r=rack_panel_hole_r(config,
+                    corner_r=rack_panel_corner_r(config)));
 
     YZPanelFixings(config);
   }

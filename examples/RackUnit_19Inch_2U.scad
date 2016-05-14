@@ -12,7 +12,7 @@ panel_padding = 5;
 screws = [1.75, [-200, -75, 75, 200], [0]]; // [radius, [xy positions], [xz positions]]
 holes = [[50, [-150, 0, 150]], [10, [-20, 20]]];
 
-rack_panel = [2];
+rack_panel = [2, 3, 5, 12.7]; // [units, hole radius, corner radius, offset]
 
 config = [internal, material, panel_padding, screws, holes, rack_panel];
 
