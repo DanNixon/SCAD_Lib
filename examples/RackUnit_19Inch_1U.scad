@@ -5,9 +5,6 @@ $fn = 16;
 explode = 0;
 side_explode = 0;
 
-internal = [200, 425, 30];
-material_thickness = 3.0;
-
 internal = [200, 425, 30]; // [depth, width, height]
 material = [3.0, 0.1]; // [thickness, tolerance]
 panel_padding = 5;
