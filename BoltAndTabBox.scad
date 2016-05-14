@@ -120,7 +120,6 @@ module YZPanel2D(config)
 {
   x = internal_dims(config)[1] + (2 * material_thickness(config));
   y = internal_dims(config)[2] + (2 * material_thickness(config));
-  double_tolerance = 2 * material_tolerance(config);
 
   difference()
   {
@@ -130,7 +129,7 @@ module YZPanel2D(config)
       circle(r=side_panel_padding(config), center=true);
     }
 
-    YZPanelFixings();
+    YZPanelFixings(config);
   }
 }
 
@@ -138,18 +137,19 @@ module Rack19InchPanel2D(config)
 {
   x = internal_dims(config)[1] + (2 * material_thickness(config));
   y = internal_dims(config)[2] + (2 * material_thickness(config));
-  double_tolerance = 2 * material_tolerance(config);
 
   difference()
   {
     RackPanel19Inch(u=rack_panel_u(config));
 
-    YZPanelFixings();
+    YZPanelFixings(config);
   }
 }
 
-module YZPanelFixings()
+module YZPanelFixings(config)
 {
+  double_tolerance = 2 * material_tolerance(config);
+
   PositionSidePanelFixings(positions=xy_panel_screws(config),
                            width=material_thickness(config)+internal_dims(config)[2])
     circle(r=screw_hole_radius(config), center=true);
