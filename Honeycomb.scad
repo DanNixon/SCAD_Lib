@@ -6,8 +6,6 @@ module Honeycomb(size = [], grid = [], cell_size, wall_thickness, center = false
 {
   module HCGrid(grid_size)
   {
-    echo (grid_size);
-
     delta = cell_size + wall_thickness;
     delta_x = (sqrt(3) / 2) * delta;
 
@@ -22,8 +20,6 @@ module Honeycomb(size = [], grid = [], cell_size, wall_thickness, center = false
           translate([X(i), Y(i, j)])
             circle(r = cell_size * (sqrt(3)/3), $fn = 6);
   }
-
-  echo (size, len(size));
 
   if(len(size) == 2)
   {
