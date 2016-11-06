@@ -1,6 +1,6 @@
 include <../config.scad>
 
-include <../common/hole.scad>
+use <../common/hole.scad>
 
 module A()
 {
