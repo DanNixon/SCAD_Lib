@@ -1,0 +1,3 @@
+MATERIAL_THICKNESS = 3;
+
+DIMS = [20, 20];
