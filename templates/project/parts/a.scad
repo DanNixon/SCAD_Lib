@@ -1,8 +1,14 @@
 include <../config.scad>
 
+include <../common/hole.scad>
+
 module A()
 {
-  square(DIMS);
+  difference()
+  {
+    square(DIMS, center=true);
+    Hole();
+  }
 }
 
 A();
