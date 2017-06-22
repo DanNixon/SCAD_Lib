@@ -1,4 +1,4 @@
-use <Suwako/Utils.scad>;
+use <SCAD_Lib/Utils.scad>;
 
 module RackPanel(plate, holes, corner_r, hole_r)
 {

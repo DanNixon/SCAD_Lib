@@ -1,4 +1,4 @@
-use <Suwako/BoltAndTabBox.scad>
+use <SCAD_Lib/BoltAndTabBox.scad>
 include <../config.scad>
 
 module RightPanel()
