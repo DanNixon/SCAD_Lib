@@ -29,7 +29,7 @@ module Washer(inner=1, outer=2, h=0)
 
 module WasherMatrix(rows, cols, inner, outer, h=0, sep=0.5)
 {
-  offset = outer + sep;
-  Matrix2D(rows, cols, offset, offset)
+  os = outer + sep;
+  Matrix2D(rows, cols, os, os)
     Washer(inner, outer, h);
 }

@@ -1,6 +1,9 @@
+use <SCAD_Lib/Shapes.scad>;
+
 function RaspberryPiZeroBoardDimensions() = [65, 30];
+function RaspberryPiZeroBoardCornerRadius() = 3;
 function RaspberryPiZeroMountCentres() = [58, 23];
-function RaspberryPiZeroMountDiemeter() = 2.75;
+function RaspberryPiZeroMountDiameter() = 2.75;
 
 module RaspberryPiZeroPlaceMountingHoles()
 {
@@ -13,17 +16,11 @@ module RaspberryPiZeroPlaceMountingHoles()
 
 module RaspberryPiZero()
 {
-  corner_radius = 3;
-
   difference()
   {
-    minkowski()
-    {
-      square(RaspberryPiZeroBoardDimensions() - ([corner_radius, corner_radius] * 2), center=true);
-      circle(r=corner_radius, $fn=32);
-    }
+    RoundedRectangle(RaspberryPiZeroBoardDimensions(), r=RaspberryPiZeroBoardCornerRadius(), center=true, $fn=32);
 
     RaspberryPiZeroPlaceMountingHoles()
-      circle(d=RaspberryPiZeroMountDiemeter(), $fn=16);
+      circle(d=RaspberryPiZeroMountDiameter(), $fn=16);
   }
 }
