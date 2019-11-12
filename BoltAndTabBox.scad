@@ -126,7 +126,7 @@ module YZPanel2D(config)
     minkowski()
     {
       square([x, y], center=true);
-      circle(r=side_panel_padding(config), center=true);
+      circle(r=side_panel_padding(config));
     }
 
     YZPanelFixings(config);
@@ -155,12 +155,12 @@ module YZPanelFixings(config)
 
   PositionSidePanelFixings(positions=xy_panel_screws(config),
                            width=material_thickness(config)+internal_dims(config)[2])
-    circle(r=screw_hole_radius(config), center=true);
+    circle(r=screw_hole_radius(config));
 
   PositionSidePanelFixings(positions=xz_panel_screws(config),
                            width=material_thickness(config)+internal_dims(config)[1],
                            along_y=1)
-    circle(r=screw_hole_radius(config), center=true);
+    circle(r=screw_hole_radius(config));
 
   PositionSidePanelFixings(positions=xy_panel_tabs(config),
                            width=material_thickness(config)+internal_dims(config)[2])
