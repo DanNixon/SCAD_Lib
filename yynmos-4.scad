@@ -1,3 +1,5 @@
+// For this (and likely other similar) 4 channel MOSFET boards: https://www.aliexpress.com/item/32746854103.html
+
 z_offset = 3.5;
 
 mounting_hole_positions = [
